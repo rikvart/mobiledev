@@ -12,25 +12,20 @@ export default function App() {
 
 
   const calcAdd = () => {
-    const resultPlus = num1 + num2;
-
-    setResult(parseInt(num1) + parseInt(num2));
-    console.log(num1);
-    console.log(result);
+    setResult(parseFloat(num1) + parseFloat(num2));
     
   }
 
   const calcDeduct = () => {
-    const resultMinus = num1 - num2;
-    setResult(Number(num1) + Number(num2));
+    setResult(parseFloat(num1) - parseFloat(num2));
 
   }
 
   return (
     <View style={styles.container}>
       <Text>Result: {result} </Text>
-      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChange={setNum1}  value={num1} className="textinput"></TextInput>
-      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChange={setNum2} value={num2} className="textinput"></TextInput>
+      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChange={num1 => setNum1(num1)}  value={String(num1)} className="textinput"></TextInput>
+      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChange={num2 => setNum2(num2)} value={String(num2)} className="textinput"></TextInput>
       <Button title="+" onPress={calcAdd} /><Button title="-" onPress={calcDeduct} />
       <StatusBar style="auto" />
     </View>
