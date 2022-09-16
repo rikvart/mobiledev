@@ -10,22 +10,21 @@ export default function App() {
   const [num2, setNum2] = useState(0);
 
 
-
   const calcAdd = () => {
-    setResult(parseFloat(num1) + parseFloat(num2));
+    setResult(Number(num1) + Number(num2));
     
   }
 
   const calcDeduct = () => {
-    setResult(parseFloat(num1) - parseFloat(num2));
+    setResult(Number(num1) - Number(num2));
 
   }
 
   return (
     <View style={styles.container}>
       <Text>Result: {result} </Text>
-      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChange={num1 => setNum1(num1)}  value={String(num1)} className="textinput"></TextInput>
-      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChange={num2 => setNum2(num2)} value={String(num2)} className="textinput"></TextInput>
+      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChangeText={value => setNum1(value)}  value={num1} className="textinput"></TextInput>
+      <TextInput style={{width:200, borderColor: 'gray', borderWidth:1}} onChangeText={value => setNum2(value)} value={num2} className="textinput"></TextInput>
       <Button title="+" onPress={calcAdd} /><Button title="-" onPress={calcDeduct} />
       <StatusBar style="auto" />
     </View>
