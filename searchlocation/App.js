@@ -5,8 +5,8 @@ import { StyleSheet, View, Text, Button, TextInput, Alert } from 'react-native';
 
 export default function Map() {
     const [keyword, setKeyword] = useState('');
-    const [location, setLocation] = useState({lat: 60.200692,
-        lng: 24.934302});
+    const [location, setLocation] = useState({lat: 0,
+        lng: 0});
 
     const fetchRepositories = () => {
         fetch('http://www.mapquestapi.com/geocoding/v1/address?key=aomkOzGemfoiGmDrnpSnyLOfZaAn522x&location=' + keyword + '+Finland')
@@ -52,10 +52,9 @@ export default function Map() {
                         }}
                 >
                     <Callout>
-                        <Text>You're here</Text>
+                        <Text>You are here</Text>
                     </Callout>
                 </Marker>
-                <Circle center={{latitude: location.lat, longitude: location.lng}} radius={500}/>
             </MapView>
         </View>
             <View style={styles.containerRow}>
@@ -64,7 +63,7 @@ export default function Map() {
                     placeholder = 'Location...'
                     onChangeText = {Text => setKeyword(Text)}/>
                 <Button 
-                    title='Show' 
+                    title='Search' 
                     onPress={fetchRepositories} />
             </View>
     </View>
